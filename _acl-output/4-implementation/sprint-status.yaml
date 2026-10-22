@@ -63,8 +63,8 @@ development_status:
   2-1-add-products-to-the-cart: done
   2-2-manage-quantities-on-the-cart-page: done
   2-3-clear-the-cart: done
-  2-4-keep-the-cart-across-visits: review
-  2-5-reconcile-the-cart-with-the-catalog: backlog
+  2-4-keep-the-cart-across-visits: done
+  2-5-reconcile-the-cart-with-the-catalog: review
   epic-2-retrospective: optional
 
   # Epic 3: Check Out and Get an Order Number

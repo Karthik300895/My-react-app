@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router'
-import { CartIndicator } from '../features/cart'
+import { CartIndicator, useCartReconciliation } from '../features/cart'
 import { NoticeRegion } from '../shared/ui/notice/NoticeRegion'
 import { PageContainer } from '../shared/ui/PageContainer'
 import { RouteProgressBar } from './RouteProgressBar'
@@ -28,6 +28,8 @@ function CartGlyph() {
 // UX-DR3: skip link, one header, one main#main and one footer on every page.
 export function RootLayout() {
   useRouteFocus()
+  // AD-14: the one place the Cart is reconciled with the catalog.
+  useCartReconciliation()
 
   return (
     <div className="flex min-h-svh flex-col">

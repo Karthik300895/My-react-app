@@ -1,5 +1,9 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import { itemAdded } from '../features/cart'
+import {
+  cartReconciled,
+  itemAdded,
+  noticesForReconciliation,
+} from '../features/cart'
 import { noticeRequested } from '../shared/ui/notice/noticesSlice'
 import type { RootState } from './store'
 
@@ -42,5 +46,15 @@ noticeListenerMiddleware.startListening({
       stock,
     })
     if (notice) api.dispatch(noticeRequested(notice))
+  },
+})
+
+// FR21, UX-DR30: each reconciliation change raises a persistent warning Notice.
+noticeListenerMiddleware.startListening({
+  actionCreator: cartReconciled,
+  effect: (action, api) => {
+    for (const notice of noticesForReconciliation(action.payload.changes)) {
+      api.dispatch(noticeRequested(notice))
+    }
   },
 })

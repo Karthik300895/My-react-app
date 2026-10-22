@@ -8,6 +8,10 @@ export type Notice = {
   message: string
   /** Persistent Notices never auto-dismiss (FR13). */
   persistent: boolean
+  /** A warning carries a warning-coloured rule (UX-DR30). */
+  variant?: 'warning'
+  /** Extra lines behind a "Show details" toggle (UX-DR30). */
+  details?: string[]
 }
 
 export type NoticesState = {

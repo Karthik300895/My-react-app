@@ -15,6 +15,7 @@ type NoticeItemProps = {
 function NoticeItem({ notice, expanded, onDismiss }: NoticeItemProps) {
   const dispatch = useDispatch()
   const [paused, setPaused] = useState(false)
+  const [detailsOpen, setDetailsOpen] = useState(false)
 
   // Auto-dismiss is not a user dismiss, so it never moves focus.
   useEffect(() => {
@@ -34,10 +35,31 @@ function NoticeItem({ notice, expanded, onDismiss }: NoticeItemProps) {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
       className={`pointer-events-auto w-full max-w-sm items-center gap-3 rounded-md bg-foreground px-4 py-3 text-body-sm text-surface shadow-float focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-surface md:w-80 ${
-        expanded ? 'flex' : 'hidden md:flex'
-      }`}
+        notice.variant === 'warning' ? 'border-l-4 border-warning' : ''
+      } ${expanded ? 'flex' : 'hidden md:flex'}`}
     >
-      <p className="flex-1">{notice.message}</p>
+      <div className="min-w-0 flex-1">
+        <p>{notice.message}</p>
+        {notice.details && (
+          <>
+            <button
+              type="button"
+              aria-expanded={detailsOpen}
+              onClick={() => setDetailsOpen((open) => !open)}
+              className="mt-1 inline-flex min-h-touch-target items-center text-caption underline"
+            >
+              {detailsOpen ? 'Hide details' : 'Show details'}
+            </button>
+            {detailsOpen && (
+              <ul className="mt-2 max-h-[40vh] list-disc space-y-1 overflow-y-auto pl-5 text-caption">
+                {notice.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            )}
+          </>
+        )}
+      </div>
       <button
         type="button"
         data-dismiss

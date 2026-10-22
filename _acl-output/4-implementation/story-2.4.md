@@ -1,9 +1,12 @@
 ---
+status: Approved
+reviewed_by: Manager (via Markdown Studio)
+review_timestamp: 2026-10-22T10:20:23.589Z
+gate_signature: ACL-STUDIO-APPROVAL-APPROVED
 title: 'Story 2.4: Keep the Cart Across Visits'
 tier: Tier 2 (Greenfield per-story gate)
 type: feature
 created: '2026-10-22'
-status: 'In Review'
 story_key: 2-4-keep-the-cart-across-visits
 baseline_commit: NO_VCS
 context:

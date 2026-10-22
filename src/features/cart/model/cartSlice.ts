@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { CartItem, CartItemSnapshot } from '../../../shared/model/cartItem'
+import type { Reconciliation } from './reconcile'
 
 export type CartState = {
   items: CartItem[]
@@ -53,6 +54,10 @@ export const cartSlice = createSlice({
     cartCleared(state) {
       state.items = []
     },
+    /** FR21: the reconciled lines. The changes are for the notice listener, not the state. */
+    cartReconciled(state, action: PayloadAction<Reconciliation>) {
+      state.items = action.payload.items
+    },
   },
 })
 
@@ -62,5 +67,6 @@ export const {
   quantityDecremented,
   itemRemoved,
   cartCleared,
+  cartReconciled,
 } = cartSlice.actions
 export const cartReducer = cartSlice.reducer
