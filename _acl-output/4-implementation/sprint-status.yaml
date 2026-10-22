@@ -1,0 +1,84 @@
+# generated: 2026-10-21
+# last_updated: 2026-10-21
+# project: my-react-app
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: {project-root}/_acl-output/4-implementation
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story starts (via quick-dev's sprint sync)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# Action Item Status:
+#   - open: Committed during a retrospective, not yet addressed
+#   - in-progress: Actively being worked on
+#   - done: Completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story starts (via quick-dev's sprint sync)
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+# - Retrospective appends its action items to action_items; sprint-status surfaces open ones
+
+generated: 2026-10-21
+last_updated: 2026-10-21
+project: my-react-app
+project_key: NOKEY
+tracking_system: file-system
+story_location: "{project-root}/_acl-output/4-implementation"
+
+development_status:
+  # Epic 1: Browse the Store
+  epic-1: in-progress
+  1-1-set-up-the-store-foundation: done
+  1-2-navigate-the-store-shell: done
+  1-3-see-the-product-grid: done
+  1-4-search-filter-and-sort-products: done
+  1-5-view-product-details: done
+  1-6-discover-products-from-home: review
+  epic-1-retrospective: optional
+
+  # Epic 2: Build a Cart That Remembers
+  epic-2: in-progress
+  2-1-add-products-to-the-cart: done
+  2-2-manage-quantities-on-the-cart-page: done
+  2-3-clear-the-cart: done
+  2-4-keep-the-cart-across-visits: review
+  2-5-reconcile-the-cart-with-the-catalog: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Check Out and Get an Order Number
+  epic-3: backlog
+  3-1-start-checkout-and-review-items: backlog
+  3-2-enter-shipping-information: backlog
+  3-3-review-and-confirm-the-order: backlog
+  3-4-see-the-order-confirmation: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Prove the Reference Implementation
+  epic-4: backlog
+  4-1-verify-the-core-journeys-end-to-end: backlog
+  4-2-enforce-the-performance-and-accessibility-budget: backlog
+  4-3-add-sort-by-rating-by-following-the-documents: backlog
+  4-4-review-release-traceability: backlog
+  epic-4-retrospective: optional

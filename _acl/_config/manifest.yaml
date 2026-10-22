@@ -1,0 +1,21 @@
+installation:
+  version: 6.11.49
+  installDate: 2026-10-21T09:33:34.710Z
+  lastUpdated: 2026-10-22T07:22:59.344Z
+modules:
+  - name: core
+    version: 6.11.49
+    installDate: 2026-10-21T09:33:34.522Z
+    lastUpdated: 2026-10-22T07:22:59.339Z
+    source: built-in
+    npmPackage: null
+    repoUrl: null
+  - name: acl
+    version: 6.11.49
+    installDate: 2026-10-21T09:33:34.268Z
+    lastUpdated: 2026-10-22T07:22:59.344Z
+    source: built-in
+    npmPackage: null
+    repoUrl: null
+ides:
+  - claude-code

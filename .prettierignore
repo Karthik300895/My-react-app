@@ -1,0 +1,25 @@
+# Build and tool output
+dist
+coverage
+playwright-report
+test-results
+node_modules
+package-lock.json
+
+# Planning artifacts and Markdown Studio (never reformatted by the shop)
+_acl-output
+_acl
+public/markdown*
+api
+
+# AD-12: holds the frozen Markdown Studio plugin; formatting it would change its bytes.
+vite.config.ts
+
+# ACL framework / agent instruction files (managed outside the shop)
+.claude
+.cursor
+.github/copilot-instructions.md
+AGENTS.md
+CLAUDE.md
+README.md
+project-detailed-context.md
