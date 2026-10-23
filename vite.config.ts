@@ -416,11 +416,13 @@ function aclMarkdownSaverPlugin() {
             const simulateUnpushed =
               url.searchParams.get('simulate') === 'unpushed' || url.searchParams.get('unpushed') === 'true';
 
+            const projectRoot = process.cwd();
+
             const env = {
               ...process.env,
               PATH:
                 (process.env.PATH || '') +
-                ';C:\\Users\\karthick.natarajan\\AppData\\Local\\Programs\\Git\\cmd;C:\\Program Files\\Git\\cmd',
+                ';' + (process.env.LOCALAPPDATA || process.env.USERPROFILE + '\\AppData\\Local') + '\\Programs\\Git\\cmd;C:\\Program Files\\Git\\cmd',
             };
 
             if (simulateUnpushed) {
@@ -660,10 +662,11 @@ function aclMarkdownSaverPlugin() {
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { shopPlugins } from './tooling/shopPlugins.ts'
+import { aclStudioApiPlugin } from './tools/acl-studio-api.mjs'
 
 // https://vite.dev/config/
 // AD-12: the acl-markdown-saver plugin above stays byte-for-byte unchanged; the shop only appends.
 export default defineConfig({
   plugins: [
-    aclMarkdownSaverPlugin(),react(), ...shopPlugins()],
+    aclMarkdownSaverPlugin(),aclStudioApiPlugin(),react(), ...shopPlugins()],
 })

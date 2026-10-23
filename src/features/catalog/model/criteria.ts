@@ -21,6 +21,13 @@ export const SORT_OPTIONS = [
     label: 'Price: high to low',
     compare: (a, b) => b.priceCents - a.priceCents,
   },
+  {
+    // AD-6, AD-7: the Epic 4 extension row. Equal ratings fall to price ascending, then id.
+    value: 'rating-desc',
+    label: 'Rating: high to low',
+    compare: (a, b) =>
+      b.rating - a.rating || a.priceCents - b.priceCents || a.id - b.id,
+  },
 ] as const satisfies readonly SortOption[]
 
 export type SortValue = (typeof SORT_OPTIONS)[number]['value']

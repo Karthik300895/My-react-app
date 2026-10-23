@@ -1938,7 +1938,13 @@ window.saveAtlassianConfig = async function (e) {
         connected: true,
       }),
     });
-    const data = await res.json();
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text || '{}');
+    } catch {
+      throw new Error(`Server returned HTTP ${res.status}: ${text || 'empty response from /api/atlassian/config. Restart the dev server and hard-refresh.'}`);
+    }
     if (data.success) {
       alert('✅ Atlassian credentials and workspace keys saved successfully!');
       renderAtlassianSuite(true);

@@ -13,6 +13,7 @@ inputDocuments:
   - _acl-output/planning-artifacts/ux-designs/ux-my-react-app-2026-10-21/DESIGN.md
   - _acl-output/planning-artifacts/ux-designs/ux-my-react-app-2026-10-21/EXPERIENCE.md
   - _acl-output/planning-artifacts/briefs/brief-my-react-app-2026-10-21/brief.md
+confluence_page_id: 1048578
 ---
 
 # Simple Shopping Cart - Epic Breakdown

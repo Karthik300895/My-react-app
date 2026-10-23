@@ -20,12 +20,16 @@
     "test:e2e": "playwright test",
     "quality": "tsc -b && eslint . && prettier --check . && vitest run --coverage",
     "preview": "vite preview",
-    "contract:live": "node tooling/contract-live.ts"
+    "contract:live": "node tooling/contract-live.ts",
+    "lhci": "lhci autorun --config=lighthouserc.json",
+    "trace": "node tooling/trace.ts",
+    "dev:local": "node tooling/dev-local.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "6.0.0",
     "@reduxjs/toolkit": "2.13.0",
     "@tanstack/react-query": "5.104.5",
+    "acl-adlc": "file:../ACL-ADLC-V1/acl-adlc-6.11.49.tgz",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-hook-form": "7.90.0",
@@ -36,6 +40,7 @@
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "0.15.1",
     "@playwright/test": "1.64.1",
     "@tailwindcss/vite": "4.3.3",
     "@testing-library/dom": "10.4.2",

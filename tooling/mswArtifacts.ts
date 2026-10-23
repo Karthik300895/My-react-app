@@ -15,6 +15,12 @@ function listFiles(dir: string): string[] {
   })
 }
 
+// AD-12: Markdown Studio ships in dist/ on purpose, as a separate tool beside the shop. Its files
+// describe MSW in their own text, so they are not shop code and are not scanned.
+export function isStudioFile(rel: string): boolean {
+  return rel === 'markdown.html' || rel.startsWith('markdown/')
+}
+
 export function findMswArtifacts(distDir: string): string[] {
   if (!existsSync(distDir) || !statSync(distDir).isDirectory())
     throw new Error(`Build output not found: ${distDir}`)
@@ -22,6 +28,7 @@ export function findMswArtifacts(distDir: string): string[] {
   const problems: string[] = []
   for (const file of listFiles(distDir)) {
     const rel = relative(distDir, file).replaceAll('\\', '/')
+    if (isStudioFile(rel)) continue
     if (file.endsWith(WORKER_FILENAME)) {
       problems.push(`${rel}: MSW worker file must not ship`)
       continue

@@ -15,7 +15,37 @@ import {
 /** A stalled request fails as a network error instead of loading forever. */
 export const REQUEST_TIMEOUT_MS = 15_000
 
+/**
+ * Development only (app/localFallback.ts): answers a Product API path from local data when the
+ * live API is unreachable. Returns `undefined` for a path it does not cover.
+ */
+export type LocalFallback = (path: string) => unknown | undefined
+
+let localFallback: LocalFallback | null = null
+
+export function setLocalFallback(fallback: LocalFallback | null): void {
+  localFallback = fallback
+}
+
+/** The live API is down: a network failure, or a server error. Client errors are not masked. */
+function isUnavailable(error: unknown): boolean {
+  return (
+    error instanceof ApiError &&
+    (error.kind === 'network' || (error.kind === 'http' && (error.status ?? 0) >= 500))
+  )
+}
+
 async function requestJson(path: string, signal?: AbortSignal): Promise<unknown> {
+  try {
+    return await requestLive(path, signal)
+  } catch (error) {
+    const local = isUnavailable(error) ? localFallback?.(path) : undefined
+    if (local !== undefined) return local
+    throw error
+  }
+}
+
+async function requestLive(path: string, signal?: AbortSignal): Promise<unknown> {
   const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS)
   let response: Response
   try {

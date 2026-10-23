@@ -12,6 +12,7 @@ baseline_commit: NO_VCS
 context:
   - '{project-root}/_acl-output/planning-artifacts/epics.md'
   - '{project-root}/_acl-output/planning-artifacts/architecture/architecture-my-react-app-2026-10-21/ARCHITECTURE-SPINE.md'
+jira_key: KAN-13
 ---
 
 # Story 2.3: Clear the Cart

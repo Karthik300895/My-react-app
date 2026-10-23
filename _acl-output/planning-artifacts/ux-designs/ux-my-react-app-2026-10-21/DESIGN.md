@@ -176,6 +176,7 @@ components:
   skeleton:
     background: '{colors.muted}'
     radius: '{rounded.md}'
+confluence_page_id: 819233
 ---
 
 ## Brand & Style

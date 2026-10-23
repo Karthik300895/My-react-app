@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sync-1792736466587",
+    "timestamp": "2026-10-23T06:21:06.587Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "live-cloud",
+    "totalItems": 23,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 19 Stories (17 updated in-place, 6 created) without duplicates."
+  },
+  {
+    "id": "sync-1792677249936",
+    "timestamp": "2026-10-22T13:54:09.936Z",
+    "action": "Confluence Documentation Sync (Push)",
+    "mode": "live-cloud",
+    "totalPages": 6,
+    "spaceKey": "MYREACTAPP",
+    "summary": "Synced 6 deliverables to Confluence space MYREACTAPP (0 updated in-place, 6 created) without duplicates."
+  },
+  {
+    "id": "sync-1792677193165",
+    "timestamp": "2026-10-22T13:53:13.165Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "live-cloud",
+    "totalItems": 17,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 13 Stories (0 updated in-place, 17 created) without duplicates."
+  },
+  {
+    "id": "sync-1792677036062",
+    "timestamp": "2026-10-22T13:50:36.062Z",
+    "action": "Confluence Documentation Sync (Push)",
+    "mode": "simulated-demo",
+    "totalPages": 6,
+    "spaceKey": "MYREACTAPP",
+    "summary": "Synced 6 deliverables to Confluence space MYREACTAPP (0 updated in-place, 6 created) without duplicates."
+  },
+  {
+    "id": "sync-1792676974292",
+    "timestamp": "2026-10-22T13:49:34.292Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "simulated-demo",
+    "totalItems": 17,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 13 Stories (17 updated in-place, 0 created) without duplicates."
+  },
+  {
+    "id": "sync-1792676898991",
+    "timestamp": "2026-10-22T13:48:18.991Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "simulated-demo",
+    "totalItems": 17,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 13 Stories (17 updated in-place, 0 created) without duplicates."
+  },
+  {
+    "id": "sync-1792676858949",
+    "timestamp": "2026-10-22T13:47:38.949Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "simulated-demo",
+    "totalItems": 17,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 13 Stories (17 updated in-place, 0 created) without duplicates."
+  },
+  {
+    "id": "sync-1792676851787",
+    "timestamp": "2026-10-22T13:47:31.787Z",
+    "action": "JIRA Epics & Stories Sync (Push)",
+    "mode": "simulated-demo",
+    "totalItems": 17,
+    "projectKey": "KAN",
+    "summary": "Synced 4 Epics & 13 Stories (0 updated in-place, 17 created) without duplicates."
+  }
+]

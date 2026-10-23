@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { CartItem, CartItemSnapshot } from '../../../shared/model/cartItem'
+import { orderPlaced } from '../../../shared/model/events'
 import type { Reconciliation } from './reconcile'
 
 export type CartState = {
@@ -58,6 +59,12 @@ export const cartSlice = createSlice({
     cartReconciled(state, action: PayloadAction<Reconciliation>) {
       state.items = action.payload.items
     },
+  },
+  extraReducers: (builder) => {
+    // AD-15, FR27: placing an Order empties the Cart. cartCleared is not used for this.
+    builder.addCase(orderPlaced, (state) => {
+      state.items = []
+    })
   },
 })
 

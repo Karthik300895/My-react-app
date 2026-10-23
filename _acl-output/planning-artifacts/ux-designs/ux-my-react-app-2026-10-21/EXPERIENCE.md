@@ -10,6 +10,7 @@ sources:
   - _acl-output/planning-artifacts/prds/prd-my-react-app-2026-10-21/prd.md
   - _acl-output/planning-artifacts/architecture/architecture-my-react-app-2026-10-21/ARCHITECTURE-SPINE.md
   - _acl-output/planning-artifacts/briefs/brief-my-react-app-2026-10-21/brief.md
+confluence_page_id: 1081345
 ---
 
 # Simple Shopping Cart — Experience Spine

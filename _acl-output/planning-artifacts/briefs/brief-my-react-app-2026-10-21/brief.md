@@ -7,6 +7,7 @@ title: "Product Brief: Simple Shopping Cart"
 project_type: greenfield
 created: "2026-10-21"
 updated: "2026-10-21"
+confluence_page_id: 917524
 ---
 
 # Product Brief: Simple Shopping Cart

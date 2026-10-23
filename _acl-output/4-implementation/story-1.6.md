@@ -12,6 +12,7 @@ story_key: 1-6-discover-products-from-home
 baseline_commit: NO_VCS
 context:
   - '{project-root}/_acl-output/4-implementation/epic-1-context.md'
+jira_key: KAN-10
 ---
 
 <frozen-after-approval reason="human-owned intent — do not modify unless human renegotiates">

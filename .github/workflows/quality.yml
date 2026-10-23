@@ -23,3 +23,18 @@ jobs:
       - run: npx playwright install --with-deps chromium
       # Story 1.2: shell layout, focus and scroll checks in a real browser (desktop + mobile).
       - run: npm run test:e2e
+
+  # Story 4.2: Performance and Accessibility ≥ 0.9, LCP ≤ 2.5 s, CLS ≤ 0.1 on mobile (NFR1, NFR2).
+  # Runs after e2e and blocks the merge on a budget miss.
+  lighthouse:
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run lhci

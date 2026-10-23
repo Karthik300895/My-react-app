@@ -73,3 +73,14 @@ export default defineConfig([
 ])
 
 ```
+
+## Extending the store
+
+**Sort by rating (Story 4.3).** Built from the documents alone, touching only `features/catalog/**`:
+
+- **PRD §7.2** deferred the rating sort, so it went through the story gate before any code.
+- **AD-6** keeps sorting as a pure function over the whole catalog, driven by the `SORT_OPTIONS` table. The new `rating-desc` row is the only change to the sort logic.
+- **AD-7** validates the URL against that table, so `?sort=rating-desc` round-trips with no new parsing code.
+- Ties fall to price ascending, then id, so the order is deterministic.
+
+The `FR-4:` tests in `src/features/catalog/model/criteria.test.ts` cover the order, the tie-break and the URL round-trip.

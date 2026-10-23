@@ -6,12 +6,24 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { productFixtures } from '../mocks/fixtures/products'
 import { server } from '../mocks/node'
 import { PRODUCT_API_ORIGIN } from '../shared/api/dto'
+import type { CartItem } from '../shared/model/cartItem'
 import { renderWithRouter } from '../shared/lib/renderWithRouter'
 import { routes } from './router'
 import { makeStore } from './store'
 
+// Checkout redirects an empty Cart to /cart (FR23), so /checkout needs an item to render itself.
+const ONE_ITEM: CartItem = {
+  productId: 1,
+  title: 'Product 1',
+  thumbnail: 'https://example.test/1.png',
+  unitPriceCents: 1000,
+  stock: 9,
+  quantity: 1,
+}
+
 function renderAt(path: string, table: RouteObject[] = routes) {
-  return renderWithRouter(table, path, makeStore()).router
+  const items = path === '/checkout' ? [ONE_ITEM] : []
+  return renderWithRouter(table, path, makeStore(items)).router
 }
 
 // The real route table plus one extra child route under the root layout.
@@ -42,7 +54,6 @@ describe('route table (AD-11)', () => {
     ],
     ['/cart', 'Your cart', 'Cart'],
     ['/checkout', 'Checkout', 'Checkout'],
-    ['/order-confirmation', 'Order confirmation', 'Order confirmation'],
   ])(
     'FR30: %s renders its page with one h1 and a page title',
     async (path, heading, title) => {
@@ -68,6 +79,12 @@ describe('route table (AD-11)', () => {
 
     await act(() => router.navigate(1))
     expect(await h1('Your cart')).toBeInTheDocument()
+  })
+
+  it('FR29: /order-confirmation with no placed Order goes Home', async () => {
+    renderAt('/order-confirmation')
+
+    expect(await h1(HOME_H1)).toBeInTheDocument()
   })
 
   it('FR32: an unknown URL shows Not Found with links to Home and Shop', async () => {

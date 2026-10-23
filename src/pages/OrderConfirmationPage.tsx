@@ -1,12 +1,15 @@
+import { ConfirmationGuard, OrderConfirmation } from '../features/checkout'
 import { useDocumentTitle } from '../shared/lib/useDocumentTitle'
 import { PageContainer } from '../shared/ui/PageContainer'
 
-// Placeholder until its story lands; it keeps the single-h1 contract (AD-11).
+// FR28, FR29: the confirmation for the Order just placed. Opened without one, it redirects Home.
 export function OrderConfirmationPage() {
   useDocumentTitle('Order confirmation')
   return (
     <PageContainer className="py-section-gap">
-      <h1 className="text-h1 text-foreground">Order confirmation</h1>
+      <ConfirmationGuard>
+        <OrderConfirmation />
+      </ConfirmationGuard>
     </PageContainer>
   )
 }

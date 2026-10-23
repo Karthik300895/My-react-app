@@ -17,6 +17,7 @@ sources:
   - _acl-output/planning-artifacts/briefs/brief-my-react-app-2026-10-21/brief.md
 companions:
   - .memlog.md
+confluence_page_id: 917508
 ---
 
 # Architecture Spine — Simple Shopping Cart

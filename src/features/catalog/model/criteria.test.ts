@@ -72,11 +72,12 @@ describe('criteria parsing (AD-7)', () => {
     expect(parseSort(raw)).toBe(sort)
   })
 
-  it('FR4: the sort table lists exactly the three V1 options with their labels', () => {
+  it('FR4: the sort table lists the four options with their labels', () => {
     expect(SORT_OPTIONS.map((o) => [o.value, o.label])).toEqual([
       ['relevance', 'Relevance'],
       ['price-asc', 'Price: low to high'],
       ['price-desc', 'Price: high to low'],
+      ['rating-desc', 'Rating: high to low'],
     ])
     expect(sortLabel('price-desc')).toBe('Price: high to low')
   })
@@ -157,5 +158,41 @@ describe('listing functions (AD-6)', () => {
     ['', '', 'No products match.'],
   ])('FR6: describes q=%j category=%j', (q, name, text) => {
     expect(describeNoMatch(q, name)).toBe(text)
+  })
+})
+
+describe('FR-4: sort by rating (AD-6, AD-7)', () => {
+  const rated = (id: number, rating: number, priceCents: number): Product => ({
+    ...product(id, `Item ${id}`, priceCents, 'mens-watches'),
+    rating,
+  })
+  const catalog = [
+    rated(1, 4.2, 5000),
+    rated(2, 4.9, 3000),
+    rated(3, 4.2, 2000), // ties with 1 on rating; cheaper, so first
+    rated(4, 3.1, 1000),
+    rated(5, 4.9, 3000), // ties with 2 on rating and price; higher id, so after
+  ]
+
+  it('FR-4: rating-desc orders the highest rating first', () => {
+    expect(
+      ids(applyCriteria(catalog, { q: '', category: '', sort: 'rating-desc' })),
+    ).toEqual([2, 5, 3, 1, 4])
+  })
+
+  it('FR-4: equal ratings fall to price ascending, then to id', () => {
+    const tied = [rated(9, 4.5, 1000), rated(7, 4.5, 1000), rated(8, 4.5, 500)]
+    expect(
+      ids(applyCriteria(tied, { q: '', category: '', sort: 'rating-desc' })),
+    ).toEqual([8, 7, 9])
+  })
+
+  it('FR-4: "rating-desc" round-trips through the URL parser', () => {
+    expect(parseSort('rating-desc')).toBe('rating-desc')
+    expect(sortLabel('rating-desc')).toBe('Rating: high to low')
+  })
+
+  it('FR-4: an unknown sort still falls back to relevance', () => {
+    expect(parseSort('rating-asc')).toBe('relevance')
   })
 })

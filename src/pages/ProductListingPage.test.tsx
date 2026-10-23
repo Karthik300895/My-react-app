@@ -330,6 +330,7 @@ describe('Search, filter and sort (FR2–FR6)', () => {
       'Relevance',
       'Price: low to high',
       'Price: high to low',
+      'Rating: high to low',
     ])
   })
 

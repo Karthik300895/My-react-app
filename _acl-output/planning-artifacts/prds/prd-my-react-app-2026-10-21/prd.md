@@ -6,6 +6,7 @@ gate_signature: ACL-STUDIO-APPROVAL-APPROVED
 title: "PRD: Simple Shopping Cart"
 created: "2026-10-21"
 updated: "2026-10-21"
+confluence_page_id: 819217
 ---
 
 # PRD: Simple Shopping Cart

@@ -3,7 +3,11 @@ import { z } from 'zod'
 // AD-5: DummyJSON response shapes. Only `zod` is imported here, so the Node-run
 // contract check (tooling/contract-live.ts) and the MSW fixtures share these schemas.
 
-export const PRODUCT_API_ORIGIN = 'https://dummyjson.com'
+// Build-time override for the budget run: VITE_PRODUCT_API_ORIGIN points the app at a local
+// stub (tooling/api-stub.mjs). Unset, it is DummyJSON. Node (contract check) has no import.meta.env.
+const ENV = (import.meta as { env?: Record<string, string | undefined> }).env
+export const PRODUCT_API_ORIGIN =
+  ENV?.VITE_PRODUCT_API_ORIGIN || 'https://dummyjson.com'
 
 /** The single list of fields the catalog requests (`id` is always returned). */
 export const CATALOG_SELECT = [

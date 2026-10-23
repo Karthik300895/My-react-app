@@ -44,7 +44,10 @@ test('AD-9, UX-DR6: an out-of-stock Product is shown with its badge and filtered
     has: page.getByRole('link', { name: 'Chanel Coco Noir Eau De' }),
   })
 
-  await expect(card.getByText('Out of stock')).toBeVisible()
+  // "Out of stock" also names the disabled button, so target the badge span only.
+  await expect(
+    card.locator('span').filter({ hasText: /^Out of stock$/ }),
+  ).toBeVisible()
   const filter = await card
     .getByRole('img')
     .evaluate((img) => getComputedStyle(img).filter)
